@@ -1,0 +1,5 @@
+g++ -pthread QueueServerLibrary.o Server.cpp -o bin/server
+/usr/bin/ld: cannot open output file bin/server: No such file or directory
+collect2: error: ld returned 1 exit status
+Makefile:20: recipe for target 'cs' failed
+make: *** [cs] Error 1
