@@ -1,5 +1,6 @@
-Clinet Server application with an external queue. 
-I'll be using simple queue which includes some old client-server code from a project I wrote
+Clinet Server application with an external queue.
+================================================= 
+I am using a simple queue which includes some old client-server code from a project I wrote.
 
 
 Clients:
@@ -43,10 +44,10 @@ Choosing FIFO queue. Even though it limits the batch working size it allowes exa
 And it resolves the best-effort ordering of the standard queue.
 - Settings: Dead Letter Queue for better error handling "later".
 - queue server is running on "localhost" listening to port 22000 and 22001
--defines QS_HOSTNAME "localhost"
--defines QS_PRODUCER_PORT 22000
--defines QS_CONSUMER_PORT 22001
--defines MAX_MSG_SIZE 80
+- defines QS_HOSTNAME "localhost"
+- defines QS_PRODUCER_PORT 22000
+- defines QS_CONSUMER_PORT 22001
+- defines MAX_MSG_SIZE 80
 
 
 

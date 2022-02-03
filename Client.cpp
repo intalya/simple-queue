@@ -29,8 +29,7 @@ int main(int argc, char *argv[])
 {
   std::cout << ("Client: Hello World!\n");
 
-  // usage check: 
-
+  // usage check: too many arguments
   if (!(argc == 3 || argc == 2))
   {
     usage(__LINE__);
@@ -68,6 +67,12 @@ void usage(int line) {
             << "  r [data] (remove item by id)\n";
 }
 
+/**
+ * @brief checkType
+ * checking the type received from the command line
+ * @param type
+ * @return int
+ */
 int checkType(std::string type){
   if (type.length() == 1) {
     if (type.at(0) != 'a' && type.at(0) != 'g' && type.at(0) != 'l' && type.at(0) != 'r') {
@@ -80,6 +85,13 @@ int checkType(std::string type){
   return -1;
 }
 
+/**
+ * @brief sendMsgToQueue from the queue API
+ *
+ * @param type
+ * @param data
+ * @return int
+ */
 int sendMsgToQueue(std::string type, std::string data) {
   std::cout << "Client command: " << type << " " << data << std::endl;
   QueueMessage msg;
@@ -88,6 +100,12 @@ int sendMsgToQueue(std::string type, std::string data) {
   sendQueueMessage(msg);
 }
 
+/**
+ * @brief Create a Type object (struct)
+ * to fit the protocol standards.
+ * @param type 
+ * @return QueueMessageType 
+ */
 QueueMessageType createType(std::string type)
 {
   std::cout << "Client type: " << type << std::endl;
@@ -103,7 +121,7 @@ QueueMessageType createType(std::string type)
     return GET_ALL_ITEMS;
   default:
     usage(__LINE__);
-    exit(1); //TODO
+    exit(1); 
   }
 }
 

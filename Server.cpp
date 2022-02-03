@@ -76,6 +76,11 @@ int main(int argc, char **argv) {
  return 1;
 }
 
+/**
+ * @brief initiateServices
+ * pre-processing of the messages
+ * @param msg
+ */
 void initiateServices(const QueueMessage& msg) {
   int flag = 0;
   switch (msg.messageType) {
@@ -100,6 +105,13 @@ void initiateServices(const QueueMessage& msg) {
   }
 }
 
+/**
+ * @brief addItem
+ * adding item to the map. Getting an ID and creating 
+ * a pair. Using mutex to map insert. 
+ * @param data
+ * @return int
+ */
 int addItem(std::string data) {
   std::cout << "Server: addItem(std::string data)" << std::endl;
   mapMutex.lock();
@@ -115,7 +127,11 @@ int addItem(std::string data) {
   addLog(buf);
 }
 
-
+/**
+ * @brief Create a Id as a string obect.
+ * static to create unique.
+ * @return std::string 
+ */
 std::string createId() {
   std::cout << "Server: createId" << std::endl;
   static int counter = 0;
@@ -123,7 +139,12 @@ std::string createId() {
   return std::to_string(counter);
 }
 
-
+/**
+ * @brief removeItem by ID
+ * using mutex, map find, map erase.
+ * @param id
+ * @return int
+ */
 int removeItem(std::string id) {
   std::cout << "Server: removeItem" << std::endl;
   std::string buf;
@@ -148,7 +169,12 @@ int removeItem(std::string id) {
   }
 }
 
-
+/**
+ * @brief Get the Item object by ID
+ * using mutex, map find. 
+ * @param id 
+ * @return int 
+ */
 int getItem(std::string id) {
   std::cout << "Server: getItem" << std::endl;
   std::map<std::string, std::string>::iterator it;
@@ -172,7 +198,11 @@ int getItem(std::string id) {
   }
 }
 
-
+/**
+ * @brief Get the All Items object by id
+ * listing all items by iterating over the map.
+ * @return int 
+ */
 int getAllItems() {
   std::cout << "Server: getAllItems" << std::endl;
   std::string buf;
